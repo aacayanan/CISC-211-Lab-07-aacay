@@ -60,6 +60,10 @@ asmFunc:
     
     /*** STUDENTS: Place your code BELOW this line!!! **************/
 
+    mov r5, 0x0000000C
+    mov r6, 0x0000000A
+    ands r8, r5, r6
+    lsr r7, r5, #3
     
     /*** STUDENTS: Place your code ABOVE this line!!! **************/
 
