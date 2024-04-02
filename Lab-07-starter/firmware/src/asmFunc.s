@@ -60,10 +60,26 @@ asmFunc:
     
     /*** STUDENTS: Place your code BELOW this line!!! **************/
 
-    mov r5, 0x0000000C
-    mov r6, 0x0000000A
-    ands r8, r5, r6
-    lsr r7, r5, #3
+    // copy r0 to a new register (r1)
+    mov r1, r0
+    
+    // move the A bits into the LSB 16 bits of the r1 register
+    asr r1, r1, #16	// asr will keep sign of MSB
+    
+    // perform sign extension if necessary (will preform regardless if pos or neg)
+    lsl r3, r3, #16	// shift to the left MSB
+    asr r3, r3, #16	// shift back to LSB, keeping sign of MSB
+    
+    // store contents of r1 to a_value
+    ldr r5, =a_value
+    str r1, [r5]
+    
+    // store contents of r2 to b_value
+    ldr r6, =b_value
+    str r3, [r6]
+    
+    b done
+    
     
     /*** STUDENTS: Place your code ABOVE this line!!! **************/
 
